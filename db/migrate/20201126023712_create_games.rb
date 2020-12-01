@@ -1,6 +1,6 @@
-class CreateVideoGames < ActiveRecord::Migration[6.0]
+class CreateGames < ActiveRecord::Migration[6.0]
   def change
-    create_table :video_games do |t|
+    create_table :games do |t|
       t.string :title
       t.string :rating
       t.string :difficulty_level

@@ -1,3 +1,9 @@
 class User < ApplicationRecord
-    has_many :video_games, through: :profiles
+    has_secure_password
+    validates :username, :email, presence: true
+    validates :username, :email, uniqueness: true
+
+    has_many :profiles
+    has_many :games, through: :profiles
+
 end

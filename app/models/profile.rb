@@ -1,4 +1,4 @@
 class Profile < ApplicationRecord
-    belongs_to :users
-    belongs_to :video_games
+    belongs_to :user
+    belongs_to :game
 end
