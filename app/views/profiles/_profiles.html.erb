@@ -1,0 +1,6 @@
+<% profiles.each do |profile| %>
+    <p><%= link_to profile.name, profile_path(profile) %> -
+      <%= profile.last_updated%> -
+      owner: <%= profile.user.try(:username) %> -
+      vet: <%= profile.game.try(:name) %></p>
+<% end %>

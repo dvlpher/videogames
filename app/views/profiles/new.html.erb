@@ -1,19 +1,4 @@
-<h1>Create a Profile</h1>
 
-<%= render '/layouts/errors', locals: { object: @profile} %>
+<h1>Create a Profile!</h1>
 
-<%= form_for  @profile do |f| %>
-
-<div>
-    <%= f.label :percent_completed %>
-    <%= f.select(:percent_completed,[0..100]) %>
-</div>
-
-<div>
-    <%= f.label :game_id, "Select a game" %>
-    <%= f.collection_select :game_id, Game.all, :id, :title, prompt :true %>
-</div>
-
-
-    <%= f.submit %>
-<% end %>
+ <%= render 'form' %>

@@ -1,1 +1,10 @@
-<h1> Welcome <%= @user.name %>!</h1>
+<h1>Profile</h1>
+#confirm how time shows, edit if needed
+<p> <%= @profile.name %> was last played on <%= @profile.last_updated%> by <%= @profile.user.name %> </p>
+
+<p><%= @profile.game.title %> - <%= @profile.game.rating %></p>
+
+<% if @profile.user == current_user %>
+  <%= link_to "Edit Profile", edit_profile_path(@profile) %>
+  <%= link_to "Delete Profile", profile_path(@profile), method: :delete  %>
+<% end %>
