@@ -1,4 +1,5 @@
 class ProfilesController < ApplicationController
+    before_action :logged_in?, except: {:index}
     def new
         #checks if it's nested and it's a proper id
         if params[game_id] && @game = Game.find_by_id(params[:game_id])
