@@ -1,0 +1,13 @@
+<h1>Profiles!</h1>
+
+<%= form_tag("/profiles", method: "get") do %>
+<%= label_tag(:percent_completed, "Select the progress you would like to see ") %>
+<%= number_field_tag(:percent_completed) %>
+<%= submit_tag("Search") %>
+<% end %>
+
+<h3> Games Played & Users </h3>
+<% @profiles.each do |profile| %>
+<%= link_to profile.name, profile_path(profile) %> - Last Played: <%= profile.last_updated %> - <%= profile.user.try(:name) %>  - <%= profile.user.try(:game) %>
+
+<% end %>

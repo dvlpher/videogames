@@ -11,12 +11,24 @@ class SessionsController < ApplicationController
             session[:user_id] = @user.id
             redirect_to games_path
         else
-            redirect_to 'login'
+            #only use with a redirect
+            flash[:error] = "Sorry, your username or password was incorrect."
+            redirect_to '/login'
         end
-
     end
 
-    def index
+    def fbcreate
+        @user.find_or_create_by(uid: auth['uid']) do |u|
+        u.name = auth['info']['name']
+        u.email = auth['info']['name']
+        u.image
+        end
+        
+        session[:user_id] = @user.id
+        redirect_to '/profiles'
+    end
+
+    def home
 
     end
 
@@ -24,6 +36,11 @@ class SessionsController < ApplicationController
     def destroy
         session.clear
         redirect_to '/'
+    end
+
+    private
+    def auth 
+        request.env['omniauth.auth']                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
     end
     
 end
