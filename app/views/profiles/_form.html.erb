@@ -2,34 +2,24 @@
 
   <%= render partial: 'layouts/errors', locals: {object: @profile} %>
 
+<div>
   <%= f.label :name %>
   <%= f.text_field :name %>
+  </div>
 
+  <div>
+  <%= f.label :percent_completed %>
+  <%= f.number_field(:percent_completed, min: 0, max: 100) %>
+  </div>
 
-  <%= f.label :last_updated %>
-  #auto populate last_updated
-  <%= f.time_field :last_updated %>
 
   <br><br>
 
   <%= f.label :game_id, "Select a Game" %>
-  <%= f.collection_select :game_id, Game.all, :id, :name, prompt: true %>
+  <%= f.collection_select :game_id, Game.all, :id, :title, prompt: true %>
   <br><br>
 
-  <% if !params[:game_id] %>
-    <h4>Or add a new game:</h4>
 
-    <%= f.fields_for :game do |v|%>
-        <%= v.label :title %>
-        <%= v.text_field :title %>
-
-        <%= v.label :rating %>
-        <%= v.text_field :rating %>
-
-        <%= v.label :difficulty_level %>
-        <%= v.text_field :difficulty_level %>
-    <% end %>
-  <% end %>
 
   <br><br>
   <%= f.submit %>

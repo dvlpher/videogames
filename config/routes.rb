@@ -13,7 +13,7 @@ resources :users
 resources :profiles 
 
 resources :games do
-  resources :profiles, only: [:new, :index]
+  resources :profiles, only: [:new, :create, :index]
 end
 
 end

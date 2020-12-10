@@ -18,10 +18,12 @@ class SessionsController < ApplicationController
     end
 
     def fbcreate
-        @user.find_or_create_by(uid: auth['uid']) do |u|
+        @user = User.find_or_create_by(uid: auth['uid']) do |u|
         u.name = auth['info']['name']
-        u.email = auth['info']['name']
-        u.image
+        u.email = auth['info']['email']
+        u.username = auth['info']['name'].split(" ").join("")
+        u.age = 18
+        u.password = SecureRandom.hex
         end
         
         session[:user_id] = @user.id
@@ -29,7 +31,9 @@ class SessionsController < ApplicationController
     end
 
     def home
-
+        if logged_in? 
+            redirect_to user_path(current_user)
+        end
     end
 
     #logout

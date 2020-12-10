@@ -5,3 +5,5 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+cod = Game.create(title: "Call of Duty", rating: "Mature", difficulty_level: "Hard")
+celeste = User.create(name: "Celeste", username: "celly", email: "celly@c.com", age: 27, password: "password")

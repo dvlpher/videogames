@@ -1,0 +1,37 @@
+
+<%= form_with(url: games_path) do |g| %>
+
+
+
+<%= g.fields_for @game do |game| %>
+<%= render partial: 'layouts/errors', locals: {object: @game} %>
+        <%= game.label :title %>
+        <%= game.text_field :title, required:true %>
+        
+
+        <%= game.label :rating %>
+        <%= game.select(:rating, ["everyone", "teen", "mature"]) %>
+
+        <%= game.label :difficulty_level %>
+        <%= game.select(:difficulty_level, ["beginner", "intermediate", "advanced"]) %>
+  <br><br>
+<% end %>
+
+ 
+    <h4>Add a Game Profile:</h4>
+
+    <%= g.fields_for @profile do |p|%>
+        <%= p.label :name %>
+        <%= p.text_field :name, required:true %>
+
+         <%= p.label :percent_completed %>
+        <%= p.number_field(:percent_completed, min: 0, max: 100) %>
+
+       
+  <% end %>
+
+
+  <br><br>
+  <%= g.submit %>
+
+<% end %>

@@ -2,3 +2,11 @@
 
 <h3>Rating: <%= @game.rating %></h3>
 <h3>Difficulty Level: <%= @game.difficulty_level %></h3>
+<br>
+<% @game.profiles.each do |profile| %>
+        Profile Name: <%= profile.name.capitalize %><br>
+        Progess: <%= profile.percent_completed %>%<br>
+        Last Played: <%= profile.updated_at.strftime("%d/%m/%Y at %I:%M %p") %><br>
+        Played By: <%= profile.user.name %><br>
+<% end %>
+

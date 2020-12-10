@@ -10,7 +10,25 @@
   </head>
 
   <body>
-  <%= link_to 'Log Out', logout_path, method: :delete %>
+  <% if !logged_in? %>
+    <nav class="navbar">
+      <%= link_to "Sign up", signup_path, class: 'navlink' %> OR 
+      <%= link_to "Login", login_path, class: 'navlink'%> OR
+      <%= link_to "Sign in through Facebook", '/auth/facebook', class: 'navlink' %>
+    </nav>
+    <% end %>
+
+  <% if logged_in? %>
+    <nav class="navbar">
+      <%= link_to 'Log Out', logout_path, method: :delete, class: 'navlink' %>
+      <%= link_to 'All Profiles', profiles_path, class: 'navlink'%>
+      <%= link_to 'New Profile', new_profile_path, class: 'navlink' %>
+      <%= link_to 'All Games', games_path, class: 'navlink' %>
+      <%= link_to 'New Game', new_game_path, class: 'navlink' %>
+      <%= link_to 'My Account', user_path(current_user), class: 'navlink' %>
+    </nav>
+    <% end %>
+
     <%= yield %>
   </body>
 </html>

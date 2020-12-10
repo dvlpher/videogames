@@ -1,0 +1,22 @@
+<h1> Welcome <%= current_user.name %>! </h1>
+
+<div>
+<h3>Your Games</h3>
+<% current_user.games.each do |game| %>
+    <%= link_to game.title, games_path(game) %>
+    <br><br>
+<% end %>
+</div>
+
+
+
+<div>
+<h3>Your Profiles</h3>
+<% current_user.profiles.each do |profile| %>
+    <%= link_to profile.name.capitalize, profile_path(profile) %> -
+    <%= link_to profile.game.title, game_path(profile.game) %> - 
+    <%= profile.updated_at.strftime("%d/%m/%Y at %I:%M %p") %> - 
+    Progress Made: <%= profile.percent_completed %>%
+    <br><br>
+<% end %>
+</div>

@@ -3,17 +3,10 @@
 <ul>
   <% @games.each do |game|%>
     <li>
-      <%= link_to game.title, game_path(game) %> -
-      <%= game.rating %> -
-      Difficulty Level: <%= game.difficulty_level %> -
-        <ul>
-          <% game.ordered_profiles.each do |p|%>
-          <li><strong><%= p.name %></strong> |
-            <%= p.last_updated%> |
-            Owner: <%= p.user.username%>
-          </li>
-          <% end %>
-        </ul>
-    </li>
-  <% end %>
-</ul>
+      <%= link_to game.title.capitalize, game_path(game) %> -
+      Game Rating: <%= game.rating %> -
+      Difficulty Level: <%= game.difficulty_level %> 
+        </li>
+          <% end %>  
+     </ul>
+

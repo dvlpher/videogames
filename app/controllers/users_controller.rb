@@ -11,26 +11,21 @@ class UsersController < ApplicationController
         if @user.save
             #login the user
             session[:user_id] = @user.id
-            redirect_to games_path
+            redirect_to user_path(@user)
         else
             render :new
         end
 
-        def index
-            @users = User.all
-
-        end
-
-        def show
-
-        end
+    def show
+        @user = current_user
+    end
 
     end
 
     private
     
     def user_params
-        params.require(:user).permit(:username, :email, :password)
+        params.require(:user).permit(:username, :age, :name, :email, :password)
     end
     
 end

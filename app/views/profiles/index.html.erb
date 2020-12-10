@@ -8,6 +8,6 @@
 
 <h3> Games Played & Users </h3>
 <% @profiles.each do |profile| %>
-<%= link_to profile.name, profile_path(profile) %> - Last Played: <%= profile.last_updated %> - <%= profile.user.try(:name) %>  - <%= profile.user.try(:game) %>
+<%= link_to profile.name, profile_path(profile) %> Last Played: <%= profile.updated_at.strftime("%d/%m/%Y at %I:%M %p") %> Progress: <%= profile.percent_completed %>% Played By: <%= profile.user.try(:name) %>   <%= profile.user.try(:game) %> <br><br>
 
 <% end %>
