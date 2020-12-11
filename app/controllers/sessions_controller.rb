@@ -22,12 +22,13 @@ class SessionsController < ApplicationController
         u.name = auth['info']['name']
         u.email = auth['info']['email']
         u.username = auth['info']['name'].split(" ").join("")
+        #had to set age because couldn't pull age in from facebook
         u.age = 18
         u.password = SecureRandom.hex
         end
         
         session[:user_id] = @user.id
-        redirect_to '/profiles'
+        redirect_to user_path(@user)
     end
 
     def home
