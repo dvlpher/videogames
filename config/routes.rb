@@ -6,7 +6,7 @@ get '/signup' => 'users#new'
 get '/login' => 'sessions#new'
 post '/login' => 'sessions#create'
 #doesnt allow users to type in /logout only used as a link
-delete '/logout' => 'sessions#destroy'
+get '/logout' => 'sessions#destroy'
 get '/auth/facebook/callback' => 'sessions#fbcreate'
 
 resources :users

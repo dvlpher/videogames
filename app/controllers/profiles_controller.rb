@@ -40,11 +40,11 @@ class ProfilesController < ApplicationController
     end
 
     def edit
-        set_profile
+        edit_profile
     end
 
     def update
-        set_profile
+        edit_profile
         if @profile.update(profile_params)
             redirect_to profile_path(@profile)
         else
@@ -54,7 +54,7 @@ class ProfilesController < ApplicationController
     end
 
     def destroy
-        set_profile
+        edit_profile
         @profile.destroy
         redirect_to profiles_path
     end
@@ -63,6 +63,13 @@ class ProfilesController < ApplicationController
 
     def set_profile
         @profile = Profile.find_by(id: params[:id])
+        if !@profile
+            redirect_to profiles_path
+        end
+    end
+
+    def edit_profile
+        @profile = current_user.profiles.find_by(id: params[:id])
         if !@profile
             redirect_to profiles_path
         end
