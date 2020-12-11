@@ -1,6 +1,6 @@
 <h1>Profile</h1>
 
-<p> <%= @profile.name %> was last played on <%= @profile.updated_at.strftime("%d/%m/%Y at %I:%M %p") %> by <%= @profile.user.name %> </p>
+<p> <%= @profile.name %> was last played on <%= @profile.updated_at.strftime("%m/%d/%Y at %I:%M %p") %> by <%= @profile.user.name %> </p>
 
 
 <p><%= @profile.game.title %> - <%= @profile.game.rating %></p>

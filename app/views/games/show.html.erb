@@ -6,7 +6,7 @@
 <% @game.profiles.each do |profile| %>
         Profile Name: <%= profile.name.capitalize %><br>
         Progess: <%= profile.percent_completed %>%<br>
-        Last Played: <%= profile.updated_at.strftime("%d/%m/%Y at %I:%M %p") %><br>
-        Played By: <%= profile.user.name %><br>
+        Last Played: <%= profile.updated_at.strftime("%m/%d/%Y at %I:%M %p") %><br>
+        Played By: <%= profile.user.name %><br><br>
 <% end %>
 
