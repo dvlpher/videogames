@@ -1,5 +1,9 @@
 class UsersController < ApplicationController
 
+    def index
+        @users = User.all.order_by_age
+    end
+
     #loading sign up form
     def new
         @user = User.new
@@ -15,12 +19,12 @@ class UsersController < ApplicationController
         else
             render :new
         end
+    end
 
     def show
         @user = current_user
     end
 
-    end
 
     private
     

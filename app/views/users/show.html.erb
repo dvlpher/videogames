@@ -15,7 +15,7 @@
 <% current_user.profiles.each do |profile| %>
     <%= link_to profile.name.capitalize, profile_path(profile) %> -
     <%= link_to profile.game.title, game_path(profile.game) %> - 
-    <%= profile.updated_at.strftime("%d/%m/%Y at %I:%M %p") %> - 
+    <%= profile.updated_at.strftime("%m/%d/%Y at %I:%M %p") %> - 
     Progress Made: <%= profile.percent_completed %>%
     <br><br>
 <% end %>
